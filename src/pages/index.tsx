@@ -69,7 +69,7 @@ export const HomePage = () => {
                                     <p>{item.description}</p>
                                 </Box>
                                 <Box sx={imageContainerStyle}>
-                                    <img
+                                    <Image
                                         src={Images[index + 1]}
                                         alt="Logo"
                                         style={{
