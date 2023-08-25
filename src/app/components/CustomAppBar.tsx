@@ -1,6 +1,6 @@
 'use client'
 
-import { AppBar, Toolbar, Typography, Box, Button, Divider } from "@mui/material"
+import { AppBar, Toolbar, Typography, Box, Button, Divider, ButtonGroup } from "@mui/material"
 
 import React from "react"
 import { useRouter } from "next/navigation"
@@ -14,6 +14,10 @@ import HomeIcon from '@mui/icons-material/Home';
 const bannerStyle = {
     ...flexRowStyle,
     padding: '1rem',
+}
+
+const buttonStyle = {
+    borderRadius: 5,
 }
 
 export const CustomAppBar = (props: { title: string, startIcon: string }) => {
@@ -40,11 +44,11 @@ export const CustomAppBar = (props: { title: string, startIcon: string }) => {
             </Box>
             <Divider />
             <Toolbar sx={flexRowStyle}>
-                <Box>
+                <ButtonGroup size="large" variant="text" aria-label="large button group">
                     <Button
                         variant="text"
                         color="inherit"
-                        sx={{ borderRadius: 5 }}
+                        sx={buttonStyle}
                         onClick={() => router.push("/")}
                         startIcon={<HomeIcon style={{ color: "red" }} />}
                     >
@@ -57,7 +61,7 @@ export const CustomAppBar = (props: { title: string, startIcon: string }) => {
                                     key={index}
                                     variant="text"
                                     color="inherit"
-                                    sx={{ borderRadius: 5, marginLeft: '1.5rem' }}
+                                    sx={buttonStyle}
                                     onClick={() => router.push(item.path)}
                                 >
                                     {item.label}
@@ -65,7 +69,7 @@ export const CustomAppBar = (props: { title: string, startIcon: string }) => {
                             )
                         })
                     }
-                </Box>
+                </ButtonGroup>
             </Toolbar>
         </AppBar>
     )
