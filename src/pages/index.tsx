@@ -43,8 +43,8 @@ export const HomePage = () => {
                     />
                 </Box>
                 <Box sx={rightColumnStyle}>
-                    <Typography color={"red"} fontWeight={500} variant="h2">Epicicloidi con Geogebra</Typography>
-                    <Typography fontSize={"2.2rem"} variant="h3">Esplora nuove intuizioni</Typography>
+                    <Typography fontSize={"3.5rem"} color={"red"} fontWeight={500} variant="h2">Epicicloidi con Geogebra</Typography>
+                    <Typography fontSize={"2.5rem"} variant="h3">Esplora nuove intuizioni</Typography>
                 </Box>
             </Box>
             <Divider />
