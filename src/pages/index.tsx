@@ -1,6 +1,6 @@
 import { Box, Button, Divider, Typography } from "@mui/material"
 
-import { Images } from "../../public/Images"
+import { Images } from "@/../public/static/images/Images"
 
 import Image from "next/image"
 import { flexColumnStyle, flexRowStyle, leftColumnStyle, rightColumnStyle } from "@/app/components/CustomStyles"

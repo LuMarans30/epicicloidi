@@ -3,12 +3,14 @@ import { Box, Breadcrumbs, Divider, Link, List, ListItem, Typography } from "@mu
 import { useRouter } from "next/router";
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { ReactNode } from "react";
 
 interface PageGeogebraProps {
     title: string,
     url?: string,
     description?: string,
     instructions?: string[],
+    externalResources?: ReactNode[]
 }
 
 const containerStyle = {
@@ -25,9 +27,11 @@ const breadcrumbStyle = {
     width: '100%',
 }
 
-export const PageGeogebra = ({ title, description, instructions, url }: PageGeogebraProps) => {
+export const PageGeogebra = ({ title, description, instructions, url, externalResources }: PageGeogebraProps) => {
 
     const router = useRouter();
+
+    console.log("EXR", externalResources)
 
     return (
         <Box sx={containerStyle}>
@@ -78,6 +82,29 @@ export const PageGeogebra = ({ title, description, instructions, url }: PageGeog
                     })
                 }
             </List>
+            <Divider />
+            {
+                externalResources &&
+                <Box sx={{ ...flexColumnStyle, gap: '0.5rem' }}>
+                    <Typography
+                        variant="h5"
+                        noWrap
+                        component="div"
+                        textTransform={"none"}
+                    >
+                        Risorse esterne:
+                    </Typography>
+                    <List sx={{ listStyleType: 'disc' }}>
+                        {
+                            externalResources!.map((item, index) => {
+                                return (
+                                    <ListItem sx={{ display: 'list-item', fontSize: "1.2rem" }} key={index}>{item}</ListItem>
+                                )
+                            })
+                        }
+                    </List>
+                </Box>
+            }
             <Divider />
             {
                 url &&

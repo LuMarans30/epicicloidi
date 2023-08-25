@@ -1,3 +1,4 @@
+import Link from "next/link"
 import PageGeogebra from "./PageGeogebra"
 
 export const CardioideAlgoritmo = () => {
@@ -13,6 +14,12 @@ export const CardioideAlgoritmo = () => {
             description="Abbiamo riprodotto con GeoGebra l'algoritmo per la costruzione della curva Cardioide"
             url="https://www.geogebra.org/material/iframe/id/yj7qfds2/width/1584/height/714/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false"
             instructions={instructions}
+            externalResources={
+                [
+                    <Link href="/static/algoritmoCardiode.pdf" target="_blank" rel="noopener noreferrer">L'Algoritmo della cardioide</Link>,
+                    <Link href="/static/cardioideDisegnare.pdf" target="_blank" rel="noopener noreferrer">Disegna una cardioide</Link>
+                ]
+            }
         />
     )
 }

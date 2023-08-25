@@ -18,7 +18,7 @@ export const ThemeManager = (props: { children: ReactNode | ReactNode[] }) => {
                         styleOverrides: {
                             root: {
                                 '&:hover': {
-                                    backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                                    backgroundColor: prefersDarkMode ? 'rgba(255, 0, 0, 0.2)' : 'rgba(255, 0, 0, 0.6)'
                                 },
                                 '.MuiTouchRipple-child': {
                                     backgroundColor: 'rgb(255, 0, 0)',
