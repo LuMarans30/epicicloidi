@@ -13,3 +13,17 @@ export const flexColumnStyle: CSSProperties = {
     ...flexRowStyle,
     flexDirection: 'column'
 }
+
+export const leftColumnStyle = {
+    ...flexColumnStyle,
+    gap: '1rem',
+    padding: '1rem',
+    width: '50%',
+    textAlign: 'center',
+    float: 'left',
+}
+
+export const rightColumnStyle = {
+    ...leftColumnStyle,
+    float: 'right'
+}

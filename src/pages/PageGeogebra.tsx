@@ -1,5 +1,8 @@
-import { flexColumnStyle } from "@/app/components/CustomStyles";
-import { Box, Divider, List, ListItem, Typography } from "@mui/material";
+import { flexColumnStyle, flexRowStyle } from "@/app/components/CustomStyles";
+import { Box, Breadcrumbs, Divider, Link, List, ListItem, Typography } from "@mui/material";
+import { useRouter } from "next/router";
+
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 interface PageGeogebraProps {
     title: string,
@@ -14,24 +17,40 @@ const containerStyle = {
     gap: '1.5rem',
 }
 
+const breadcrumbStyle = {
+    ...flexRowStyle,
+    float: 'left',
+    justifyContent: 'flex-start',
+    textAlign: 'left',
+    width: '100%',
+}
+
 export const PageGeogebra = ({ title, description, instructions, url }: PageGeogebraProps) => {
+
+    const router = useRouter();
 
     return (
         <Box sx={containerStyle}>
+            <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={breadcrumbStyle}>
+                <Link underline="hover" color="inherit" onClick={() => router.push("/")}>
+                    Home
+                </Link>
+                <Typography color="text.primary">{title}</Typography>
+            </Breadcrumbs>
             <Typography
                 variant="h3"
                 noWrap
                 color={"red"}
                 component="div"
                 textTransform={"none"}
-                sx={{ fontWeight: '400' }}
+                sx={{ fontWeight: '500' }}
             >
                 {title}
             </Typography>
             {
                 description &&
                 <Typography
-                    variant="subtitle1"
+                    variant="h5"
                     noWrap
                     component="div"
                     textTransform={"none"}
@@ -54,7 +73,7 @@ export const PageGeogebra = ({ title, description, instructions, url }: PageGeog
                 {
                     instructions?.map((item, index) => {
                         return (
-                            <ListItem sx={{ display: 'list-item' }} key={index}>{item}</ListItem>
+                            <ListItem sx={{ display: 'list-item', fontSize: "1.2rem" }} key={index}>{item}</ListItem>
                         )
                     })
                 }
@@ -62,7 +81,7 @@ export const PageGeogebra = ({ title, description, instructions, url }: PageGeog
             <Divider />
             {
                 url &&
-                <iframe src={url} width="800" height="600" allowFullScreen style={{ border: 'none', borderRadius: 4 }}></iframe>
+                <iframe loading="lazy" src={url} width="800" height="600" allowFullScreen style={{ border: 'none', borderRadius: 4 }}></iframe>
                 /*<iframe
                     title={title as string}
                     src={url as string}

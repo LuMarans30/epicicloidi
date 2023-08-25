@@ -13,6 +13,27 @@ export const ThemeManager = (props: { children: ReactNode | ReactNode[] }) => {
                 palette: {
                     mode: prefersDarkMode ? 'dark' : 'light',
                 },
+                components: {
+                    MuiButton: {
+                        styleOverrides: {
+                            root: {
+                                '&:hover': {
+                                    backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                                },
+                                '.MuiTouchRipple-child': {
+                                    backgroundColor: 'rgb(255, 0, 0)',
+                                },
+                                transition: "background-color 1.5s",
+                            },
+                            contained: {
+                                '&:hover': {
+                                    backgroundColor: 'rgba(255, 0, 0, 0.6)',
+                                },
+                                backgroundColor: 'rgba(255,100,100)',
+                            },
+                        }
+                    }
+                }
             }),
         [prefersDarkMode],
     );

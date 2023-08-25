@@ -1,37 +1,18 @@
-import { Box, Button, Divider } from "@mui/material"
+import { Box, Button, Divider, Typography } from "@mui/material"
 
 import { Images } from "../../public/Images"
 
 import Image from "next/image"
-import { flexColumnStyle, flexRowStyle } from "@/app/components/CustomStyles"
+import { flexColumnStyle, flexRowStyle, leftColumnStyle, rightColumnStyle } from "@/app/components/CustomStyles"
 import { Routes } from "@/app/components/Routes"
 import { useRouter } from "next/router"
-
-import "./css/index.css"
 
 const containerStyle = {
     ...flexRowStyle,
     padding: '2.5rem',
 }
 
-const leftColumnStyle = {
-    ...flexColumnStyle,
-    gap: '1rem',
-    padding: '1rem',
-    width: '50%',
-    float: 'left'
-}
 
-const rightColumnStyle = {
-    ...leftColumnStyle,
-    float: 'right'
-}
-
-const imageContainerStyle = {
-    ...rightColumnStyle,
-    width: 500,
-    height: 500
-}
 
 export const HomePage = () => {
 
@@ -43,45 +24,54 @@ export const HomePage = () => {
                 <Box sx={leftColumnStyle}>
                     <Image
                         src={Images[0]}
+                        priority
                         alt="Logo"
-                        width={700}
-                        height={800}
+                        style={{
+                            width: "80%",
+                            height: "80%",
+                            objectFit: "cover"
+                        }}
+                        width="700"
+                        height="800"
                     />
                 </Box>
                 <Box sx={rightColumnStyle}>
-                    <h1>Epicicloidi con Geogebra</h1>
-                    <h2>Esplora nuove intuizioni</h2>
+                    <Typography color={"red"} fontWeight={400} variant="h2">Epicicloidi con Geogebra</Typography>
+                    <Typography variant="h3">Esplora nuove intuizioni</Typography>
                 </Box>
             </Box>
             <Divider />
             <Box sx={{ ...flexColumnStyle, padding: "2em" }}>
-                <h1>Lavori svolti</h1>
-                <h3>Scopri i lavori che abbiamo creato per te con GeoGebra e che ti aiuteranno a scoprire il magico mondo delle curve Epicicloidali.</h3>
+                <Typography fontWeight={500} color={"red"} variant="h4">Lavori svolti</Typography>
+                <Typography variant="h5">Scopri i lavori che abbiamo creato per te con GeoGebra che ti aiuteranno a scoprire il magico mondo delle curve Epicicloidali.</Typography>
             </Box>
             <Divider />
             {
                 Routes.map((item, index) => {
                     return (
-                        <>
-                            <Box sx={containerStyle} key={index} onClick={() => router.push(item.path)}>
+                        <div key={index}>
+                            <Box sx={containerStyle}>
                                 <Box sx={leftColumnStyle}>
-                                    <h1>{item.label}</h1>
-                                    <p>{item.description}</p>
+                                    <Typography fontWeight={500} color={"red"} variant="h4">{item.label}</Typography>
+                                    <Typography variant="h5">{item.description}</Typography>
+                                    <Button onClick={() => router.push(item.path)} variant="contained" color="primary">Scopri di più</Button>
                                 </Box>
-                                <Box sx={imageContainerStyle}>
+                                <Box sx={rightColumnStyle}>
                                     <Image
                                         src={Images[index + 1]}
                                         alt="Logo"
                                         style={{
-                                            width: "90%",
-                                            height: "90%",
+                                            width: "50%",
+                                            height: "50%",
                                             objectFit: "cover"
                                         }}
+                                        width={500}
+                                        height={500}
                                     />
                                 </Box>
                             </Box>
                             <Divider />
-                        </>
+                        </div>
                     )
                 })
             }

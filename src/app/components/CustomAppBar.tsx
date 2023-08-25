@@ -44,9 +44,9 @@ export const CustomAppBar = (props: { title: string, startIcon: string }) => {
                     <Button
                         variant="text"
                         color="inherit"
-                        sx={{ borderRadius: 2 }}
+                        sx={{ borderRadius: 5 }}
                         onClick={() => router.push("/")}
-                        startIcon={<HomeIcon />}
+                        startIcon={<HomeIcon style={{ color: "red" }} />}
                     >
                         Home
                     </Button>
@@ -57,7 +57,7 @@ export const CustomAppBar = (props: { title: string, startIcon: string }) => {
                                     key={index}
                                     variant="text"
                                     color="inherit"
-                                    sx={{ borderRadius: 2, marginLeft: '1.5rem' }}
+                                    sx={{ borderRadius: 5, marginLeft: '1.5rem' }}
                                     onClick={() => router.push(item.path)}
                                 >
                                     {item.label}
