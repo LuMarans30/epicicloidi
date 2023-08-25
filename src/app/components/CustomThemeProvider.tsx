@@ -21,7 +21,7 @@ export const ThemeManager = (props: { children: ReactNode | ReactNode[] }) => {
                                     backgroundColor: prefersDarkMode ? 'rgba(255, 0, 0, 0.2)' : 'rgba(255, 0, 0, 0.6)'
                                 },
                                 '.MuiTouchRipple-child': {
-                                    backgroundColor: 'rgb(255, 0, 0)',
+                                    color: 'rgb(255, 0, 0)',
                                 },
                                 transition: "background-color 1.5s",
                             },

@@ -12,6 +12,20 @@ const containerStyle = {
     padding: '2.5rem',
 }
 
+const homeImageContainerStyle = {
+    ...leftColumnStyle,
+    position: "relative",
+    width: 900,
+    height: 900
+}
+
+const imageContainerStyle = {
+    ...rightColumnStyle,
+    position: "relative",
+    width: 550,
+    height: 550
+}
+
 export const HomePage = () => {
 
     const router = useRouter();
@@ -19,29 +33,24 @@ export const HomePage = () => {
     return (
         <>
             <Box sx={containerStyle}>
-                <Box sx={leftColumnStyle}>
+                <Box sx={homeImageContainerStyle}>
                     <Image
                         src={Images[0]}
                         priority
                         alt="Logo"
-                        style={{
-                            width: "80%",
-                            height: "80%",
-                            objectFit: "cover"
-                        }}
-                        width="700"
-                        height="800"
+                        fill
+                        objectFit={'contain'}
                     />
                 </Box>
                 <Box sx={rightColumnStyle}>
-                    <Typography color={"red"} fontWeight={400} variant="h2">Epicicloidi con Geogebra</Typography>
-                    <Typography variant="h3">Esplora nuove intuizioni</Typography>
+                    <Typography color={"red"} fontWeight={500} variant="h2">Epicicloidi con Geogebra</Typography>
+                    <Typography fontSize={"2.2rem"} variant="h3">Esplora nuove intuizioni</Typography>
                 </Box>
             </Box>
             <Divider />
-            <Box sx={{ ...flexColumnStyle, padding: "2em" }}>
-                <Typography fontWeight={500} color={"red"} variant="h4">Lavori svolti</Typography>
-                <Typography variant="h5">Scopri i lavori che abbiamo creato per te con GeoGebra che ti aiuteranno a scoprire il magico mondo delle curve Epicicloidali.</Typography>
+            <Box sx={{ ...flexColumnStyle, padding: "3.5em" }}>
+                <Typography fontWeight={500} color={"red"} variant="h3">Lavori svolti</Typography>
+                <Typography fontSize={"1.2rem"} variant="h4">Scopri i lavori che abbiamo creato per te con GeoGebra che ti aiuteranno a scoprire il magico mondo delle curve Epicicloidali.</Typography>
             </Box>
             <Divider />
             {
@@ -50,21 +59,16 @@ export const HomePage = () => {
                         <div key={index}>
                             <Box sx={containerStyle}>
                                 <Box sx={leftColumnStyle}>
-                                    <Typography fontWeight={500} color={"red"} variant="h4">{item.label}</Typography>
-                                    <Typography variant="h5">{item.description}</Typography>
+                                    <Typography fontWeight={500} fontSize={"2.5rem"} color={"red"} variant="h5">{item.label}</Typography>
+                                    <Typography variant="h6">{item.description}</Typography>
                                     <Button onClick={() => router.push(item.path)} variant="contained" color="primary">Scopri di più</Button>
                                 </Box>
-                                <Box sx={rightColumnStyle}>
+                                <Box sx={imageContainerStyle}>
                                     <Image
                                         src={Images[index + 1]}
                                         alt="Logo"
-                                        style={{
-                                            width: "50%",
-                                            height: "50%",
-                                            objectFit: "cover"
-                                        }}
-                                        width={500}
-                                        height={500}
+                                        fill
+                                        objectFit={'contain'}
                                     />
                                 </Box>
                             </Box>
