@@ -82,14 +82,6 @@ export const PageGeogebra = ({ title, description, instructions, url }: PageGeog
             {
                 url &&
                 <iframe loading="lazy" src={url} width="800" height="600" allowFullScreen style={{ border: 'none', borderRadius: 4 }}></iframe>
-                /*<iframe
-                    title={title as string}
-                    src={url as string}
-                    width="1200px"
-                    height="400px"
-                    style={{ border: 'none' }}
-                    sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-                />*/
             }
         </Box >
     )

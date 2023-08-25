@@ -12,8 +12,6 @@ const containerStyle = {
     padding: '2.5rem',
 }
 
-
-
 export const HomePage = () => {
 
     const router = useRouter();
