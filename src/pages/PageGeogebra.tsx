@@ -36,7 +36,7 @@ export const PageGeogebra = ({ title, description, instructions, url, externalRe
     return (
         <Box sx={containerStyle}>
             <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb" sx={breadcrumbStyle}>
-                <Link underline="hover" color="inherit" onClick={() => router.push("/")}>
+                <Link rel="nofollow" underline="hover" color="inherit" onClick={() => router.push("/")}>
                     Home
                 </Link>
                 <Typography color="text.primary">{title}</Typography>
@@ -108,7 +108,7 @@ export const PageGeogebra = ({ title, description, instructions, url, externalRe
             <Divider />
             {
                 url &&
-                <iframe loading="lazy" src={url} width="800" height="600" allowFullScreen style={{ border: 'none', borderRadius: 4 }}></iframe>
+                <iframe title="Geogebra embedding" loading="lazy" src={url} width="800" height="600" allowFullScreen style={{ border: 'none', borderRadius: 4 }}></iframe>
             }
         </Box >
     )
