@@ -24,6 +24,10 @@ export const CustomAppBar = (props: { title: string, startIcon: string }) => {
 
     const router = useRouter();
 
+    const handleClick = (path: string) => {
+        router.push(path);
+    }
+
     return (
         <AppBar position="static">
             <Box sx={bannerStyle}>
@@ -45,24 +49,19 @@ export const CustomAppBar = (props: { title: string, startIcon: string }) => {
             <Divider />
             <Toolbar sx={flexRowStyle}>
                 <ButtonGroup size="large" variant="text" aria-label="large button group">
-                    <Button
-                        variant="text"
-                        color="inherit"
-                        sx={buttonStyle}
-                        onClick={() => router.push("/")}
-                        startIcon={<HomeIcon style={{ color: "red" }} />}
-                    >
-                        Home
-                    </Button>
                     {
                         Routes.map((item, index) => {
+
+                            const icon = <HomeIcon sx={{ color: "red" }} />
+
                             return (
                                 <Button
                                     key={index}
                                     variant="text"
                                     color="inherit"
                                     sx={buttonStyle}
-                                    onClick={() => router.push(item.path)}
+                                    onClick={() => handleClick(item.path)}
+                                    startIcon={index === 0 ? icon : undefined}
                                 >
                                     {item.label}
                                 </Button>

@@ -1,4 +1,4 @@
-import homePage from './homePage.webp';
+import homePage from './epicicloide.png';
 import epicicloideAlgoritmo from './epicicloideAlgoritmo.webp';
 import cardioideCerchioRaggio from './cardioideCerchioRaggio.webp';
 import cicloide from './cicloide.webp';

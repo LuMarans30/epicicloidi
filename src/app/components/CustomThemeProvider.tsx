@@ -22,10 +22,13 @@ export const ThemeManager = (props: { children: ReactNode | ReactNode[] }) => {
                         styleOverrides: {
                             root: {
                                 '&:hover': {
-                                    backgroundColor: prefersDarkMode ? 'rgba(170, 0, 0, 0.4)' : 'rgba(255, 0, 0, 0.2)'
+                                    backgroundColor: prefersDarkMode ? 'rgba(170, 0, 0, 0.1)' : 'rgba(255, 0, 0, 0.2)'
                                 },
                                 '.MuiTouchRipple-child': {
-                                    color: prefersDarkMode ? 'rgb(255, 170, 170)' : 'rgb(200, 0, 0)'
+                                    color: prefersDarkMode ? 'rgb(255, 0, 0)' : 'rgb(200, 0, 0)'
+                                },
+                                '&.active': {
+                                    backgroundColor: prefersDarkMode ? 'rgba(170, 0, 0, 0.8)' : 'rgba(255, 0, 0, 0.4)'
                                 },
                                 transition: "background-color 0.5s",
                             },

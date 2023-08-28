@@ -1,22 +1,20 @@
 import { Box, Button, Divider, Typography } from "@mui/material"
 
-import { Images } from "@/../public/static/images/Images"
-
 import Image from "next/image"
 import { flexColumnStyle, flexRowStyle, leftColumnStyle, rightColumnStyle } from "@/app/components/CustomStyles"
-import { Routes } from "@/app/components/Routes"
+import { HomeRoute, RoutesPages } from "@/app/components/Routes"
 import { useRouter } from "next/router"
 
 const containerStyle = {
     ...flexRowStyle,
-    padding: '2.5rem',
+    padding: '2.5rem'
 }
 
 const homeImageContainerStyle = {
     ...leftColumnStyle,
     position: "relative",
-    width: 900,
-    height: 900
+    width: 700,
+    height: 700
 }
 
 const imageContainerStyle = {
@@ -35,10 +33,11 @@ export const HomePage = () => {
             <Box sx={containerStyle}>
                 <Box sx={homeImageContainerStyle}>
                     <Image
-                        src={Images[0]}
+                        src={HomeRoute.image}
                         priority
                         alt="Logo"
                         fill
+                        style={{  }}
                         objectFit={'contain'}
                     />
                 </Box>
@@ -54,7 +53,7 @@ export const HomePage = () => {
             </Box>
             <Divider />
             {
-                Routes.map((item, index) => {
+                RoutesPages.map((item, index) => {
                     return (
                         <div key={index}>
                             <Box sx={containerStyle}>
@@ -65,7 +64,7 @@ export const HomePage = () => {
                                 </Box>
                                 <Box sx={imageContainerStyle}>
                                     <Image
-                                        src={Images[index + 1]}
+                                        src={item.image}
                                         alt="Logo"
                                         fill
                                         objectFit={'contain'}
