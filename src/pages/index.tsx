@@ -4,6 +4,7 @@ import Image from "next/image"
 import { flexColumnStyle, flexRowStyle, leftColumnStyle, rightColumnStyle } from "@/app/components/CustomStyles"
 import { RoutesPages } from "@/app/components/Routes"
 import { useRouter } from "next/router"
+import EpicycloidCanvas from "@/app/components/EpicycloidCanvas"
 
 const containerStyle = {
     ...flexRowStyle,
@@ -32,9 +33,18 @@ export const HomePage = () => {
         <>
             <Box sx={containerStyle}>
                 <Box sx={homeImageContainerStyle}>
-                    <video width={700} height={700} autoPlay muted>
+                    {/*<video width={700} height={700} autoPlay muted>
                         <source src="/static/videos/epicicloide.webm" type="video/webm" />
-                    </video>
+                    </video>*/}
+                    <EpicycloidCanvas
+                        markCount={75}
+                        animation={true}
+                        gradientList={[
+                            "#FF0000",
+                            "#de3536",
+                            "#f27338"
+                        ]}
+                    />
                 </Box>
                 <Box sx={rightColumnStyle}>
                     <Typography fontSize={"3.5rem"} color={"red"} fontWeight={500} variant="h2">Epicicloidi con Geogebra</Typography>

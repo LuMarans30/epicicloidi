@@ -7,6 +7,7 @@ import subprocess
 
 from progress.bar import IncrementalBar
 
+
 def is_tool(name):
     try:
         devnull = open(os.devnull)
@@ -15,6 +16,7 @@ def is_tool(name):
         if e.errno == os.errno.ENOENT:
             return False
     return True
+
 
 def epicycloid_plotter(precision, n, k, path, dpi):
     X = np.cos(np.linspace(0, 2 * np.pi, precision))
@@ -32,7 +34,7 @@ def epicycloid_plotter(precision, n, k, path, dpi):
     for i in finale:
         plt.plot([i[0][0], i[1][0]], [i[0][1], i[1][1]], c="r")
 
-    plt.axis('equal')
+    plt.axis("equal")
 
     index = ""
 
@@ -50,10 +52,10 @@ def epicycloid_plotter(precision, n, k, path, dpi):
 
     ax = plt.gca()
 
-    ax.spines['right'].set_visible(False)
-    ax.spines['top'].set_visible(False)
-    ax.spines['left'].set_visible(False)
-    ax.spines['bottom'].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.spines["top"].set_visible(False)
+    ax.spines["left"].set_visible(False)
+    ax.spines["bottom"].set_visible(False)
 
     plt.savefig(
         os.path.join(path, "epycicloid" + index + ".png"),
@@ -82,7 +84,9 @@ if n_max <= 0:
     sys.exit()
 
 if n_min >= n_max:
-    print("The minimum value of n cannot be greater or equal than the maximum value of n")
+    print(
+        "The minimum value of n cannot be greater or equal than the maximum value of n"
+    )
     sys.exit()
 
 if n_max > 9999 or n_min > 9999:
@@ -109,9 +113,9 @@ path = input()
 if path != "":
     if not os.path.exists(path):
         print("The path does not exist")
-        sys.exit()  
+        sys.exit()
 else:
-    path = "./epycicloid/"    
+    path = "./epycicloid/"
 
 print("Insert the DPI value of the images (default: 300): ", end="")
 dpi = input()
@@ -125,7 +129,7 @@ if dpi <= 0:
     print("The DPI value cannot be negative or equal to zero")
     sys.exit()
 
-bar = IncrementalBar('Generating images: ', max=int((n_max - n_min) / n_step))
+bar = IncrementalBar("Generating images: ", max=int((n_max - n_min) / n_step))
 
 for i in np.arange(n_min, n_max, n_step):
     epicycloid_plotter(precision, i, k, path, dpi)
@@ -142,9 +146,6 @@ video = input()
 if video == "n" or video == "N":
     sys.exit()
 else:
-
-    
-
     print("Insert the name of the video (default: epycicloid): ", end="")
     filename = input()
 
@@ -167,8 +168,15 @@ else:
     else:
         fps = int(fps)
 
-    #e.g. ffmpeg -i epycicloid%04d.png -r 20 -pix_fmt yuva420p outDark.webm
-    os.system("ffmpeg -i " + path + "epycicloid%04d.png -r " + str(fps) + " -pix_fmt yuva420p " + filename)
+    # e.g. ffmpeg -i epycicloid%04d.png -r 20 -pix_fmt yuva420p output.webm
+    os.system(
+        "ffmpeg -i "
+        + path
+        + "epycicloid%04d.png -r "
+        + str(fps)
+        + " -pix_fmt yuva420p "
+        + filename
+    )
 
     print("Done! The video is saved in the same folder of the images")
 
