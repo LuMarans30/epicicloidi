@@ -37,7 +37,6 @@ export const HomePage = () => {
                         priority
                         alt="Logo"
                         fill
-                        style={{  }}
                         objectFit={'contain'}
                     />
                 </Box>
