@@ -2,7 +2,7 @@ import { Box, Button, Divider, Typography } from "@mui/material"
 
 import Image from "next/image"
 import { flexColumnStyle, flexRowStyle, leftColumnStyle, rightColumnStyle } from "@/app/components/CustomStyles"
-import { HomeRoute, RoutesPages } from "@/app/components/Routes"
+import { RoutesPages } from "@/app/components/Routes"
 import { useRouter } from "next/router"
 
 const containerStyle = {
@@ -32,13 +32,9 @@ export const HomePage = () => {
         <>
             <Box sx={containerStyle}>
                 <Box sx={homeImageContainerStyle}>
-                    <Image
-                        src={HomeRoute.image}
-                        priority
-                        alt="Logo"
-                        fill
-                        objectFit={'contain'}
-                    />
+                    <video width={700} height={700} autoPlay muted>
+                        <source src="/static/videos/epicicloide.webm" type="video/webm" />
+                    </video>
                 </Box>
                 <Box sx={rightColumnStyle}>
                     <Typography fontSize={"3.5rem"} color={"red"} fontWeight={500} variant="h2">Epicicloidi con Geogebra</Typography>
