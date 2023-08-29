@@ -50,7 +50,7 @@ const EpicycloidCanvas = (props: EpicycloidProps) => {
                 }
             }, 50);
         }
-    }, [props.cuspCount, props.maxCusp, canvasWidth, canvasHeight]);
+    }, [props.cuspCount, props.maxCusp, canvasWidth, canvasHeight, animation]);
 
     const Circle = (props: CircleType) => {
 
