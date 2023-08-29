@@ -13,9 +13,7 @@ const containerStyle = {
 
 const homeImageContainerStyle = {
     ...leftColumnStyle,
-    position: "relative",
-    width: 700,
-    height: 700
+    position: "relative"
 }
 
 const imageContainerStyle = {
@@ -39,6 +37,9 @@ export const HomePage = () => {
                     <EpicycloidCanvas
                         markCount={75}
                         animation={true}
+                        width={500}
+                        height={500}
+                        radius={250}
                         gradientList={[
                             "#FF0000",
                             "#de3536",

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 
 type CircleType = {
     x: number;
@@ -18,7 +18,6 @@ type EpicycloidProps = {
     animation?: boolean;
     gradientList?: string[];
     maxCusp?: number;
-    fps?: number;
 };
 
 const EpicycloidCanvas = (props: EpicycloidProps) => {
@@ -37,7 +36,7 @@ const EpicycloidCanvas = (props: EpicycloidProps) => {
 
     const animation = props.animation || false;
 
-    const animate = () => {
+    const animate = useMemo(() => {
         if (animation) {
             //Change cuspCount by 0.01 every 50ms
             const interval = setInterval(() => {
@@ -51,7 +50,7 @@ const EpicycloidCanvas = (props: EpicycloidProps) => {
                 }
             }, 50);
         }
-    }
+    }, [props.cuspCount, props.maxCusp, canvasWidth, canvasHeight]);
 
     const Circle = (props: CircleType) => {
 
@@ -139,7 +138,7 @@ const EpicycloidCanvas = (props: EpicycloidProps) => {
 
             theEpicycloid.init();
 
-            animate();
+            animate;
         }
     }, []);
 
