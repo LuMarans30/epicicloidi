@@ -1,9 +1,9 @@
-import { flexColumnStyle, flexRowStyle } from "@/app/components/CustomStyles";
-import { Box, Breadcrumbs, Divider, Link, List, ListItem, Typography } from "@mui/material";
-import { useRouter } from "next/router";
+import { flexColumnStyle, flexRowStyle } from "@/app/components/CustomStyles"
+import { Box, Breadcrumbs, Divider, Link, List, ListItem, Typography } from "@mui/material"
+import { useRouter } from "next/router"
 
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { ReactNode } from "react";
+import NavigateNextIcon from '@mui/icons-material/NavigateNext'
+import { ReactNode } from "react"
 
 interface PageGeogebraProps {
     title: string,
@@ -29,7 +29,7 @@ const breadcrumbStyle = {
 
 export const PageGeogebra = ({ title, description, instructions, url, externalResources }: PageGeogebraProps) => {
 
-    const router = useRouter();
+    const router = useRouter()
 
     console.log("EXR", externalResources)
 

@@ -6,10 +6,10 @@ import React from "react"
 import { useRouter } from "next/navigation"
 import { Routes } from "./Routes"
 
-import Image from "next/image";
+import Image from "next/image"
 import { flexRowStyle } from "./CustomStyles"
 
-import HomeIcon from '@mui/icons-material/Home';
+import HomeIcon from '@mui/icons-material/Home'
 
 const bannerStyle = {
     ...flexRowStyle,
@@ -22,10 +22,10 @@ const buttonStyle = {
 
 export const CustomAppBar = (props: { title: string, startIcon: string }) => {
 
-    const router = useRouter();
+    const router = useRouter()
 
     const handleClick = (path: string) => {
-        router.push(path);
+        router.push(path)
     }
 
     return (
@@ -74,4 +74,4 @@ export const CustomAppBar = (props: { title: string, startIcon: string }) => {
     )
 }
 
-export default CustomAppBar;
+export default CustomAppBar

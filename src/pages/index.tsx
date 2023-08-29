@@ -25,7 +25,7 @@ const imageContainerStyle = {
 
 export const HomePage = () => {
 
-    const router = useRouter();
+    const router = useRouter()
 
     return (
         <>
@@ -35,7 +35,7 @@ export const HomePage = () => {
                         <source src="/static/videos/epicicloide.webm" type="video/webm" />
                     </video>*/}
                     <EpicycloidCanvas
-                        markCount={75}
+                        markCount={150}
                         animation={true}
                         width={500}
                         height={500}
@@ -45,6 +45,8 @@ export const HomePage = () => {
                             "#de3536",
                             "#f27338"
                         ]}
+                        fps={144}
+                        duration={5}
                     />
                 </Box>
                 <Box sx={rightColumnStyle}>

@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import { ReactNode } from "react";
+import { ReactNode } from "react"
 import CustomAppBar from "./CustomAppBar"
 import CustomThemeProvider from "./CustomThemeProvider"
-import Head from "next/head";
+import Head from "next/head"
 
 import icon from '../favicon.ico'
 
@@ -21,5 +21,5 @@ export default function Layout(props: { children: ReactNode | ReactNode[] }) {
                 {props.children}
             </CustomThemeProvider>
         </>
-    );
+    )
 }

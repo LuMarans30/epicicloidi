@@ -16,7 +16,7 @@ export const CardioideAlgoritmo = () => {
             instructions={instructions}
             externalResources={
                 [
-                    <Link key={1} href="/static/algoritmoCardiode.pdf" target="_blank" rel="noopener noreferrer">L&apos;Algoritmo della cardioide</Link>,
+                    <Link key={1} href="/static/algoritmoCardiode.pdf" target="_blank" rel="noopener noreferrer">L&aposAlgoritmo della cardioide</Link>,
                     <Link key={2} href="/static/cardioideDisegnare.pdf" target="_blank" rel="noopener noreferrer">Disegna una cardioide</Link>
                 ]
             }
