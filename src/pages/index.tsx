@@ -35,7 +35,7 @@ export const HomePage = () => {
                         <source src="/static/videos/epicicloide.webm" type="video/webm" />
                     </video>*/}
                     <EpicycloidCanvas
-                        markCount={150}
+                        markCount={100}
                         animation={true}
                         width={500}
                         height={500}
