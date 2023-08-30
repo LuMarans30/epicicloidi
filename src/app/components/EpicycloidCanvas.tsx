@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 type CircleType = {
     x: number;
@@ -18,7 +18,6 @@ type EpicycloidProps = {
     animation?: boolean;
     gradientList?: string[];
     maxCusp?: number;
-    fps?: number;
     duration?: number;
 };
 
@@ -38,7 +37,6 @@ const EpicycloidCanvas = (props: EpicycloidProps) => {
     const strokeColor = props.strokeColor || "red";
 
     const animation = props.animation || false;
-    const fps = props.fps || 20;
     const duration = props.duration || 0.5;
 
     const Circle = (props: CircleType) => {
@@ -71,8 +69,9 @@ const EpicycloidCanvas = (props: EpicycloidProps) => {
         };
     };
 
+    const circle = useMemo(() => Circle({ x: 0, y: 0, r: radius, markCount: markCount }), [radius, markCount]);
+
     const Epicycloid = () => {
-        let circle: any = null;
 
         const draw = () => {
             let gap = 1;
@@ -98,7 +97,6 @@ const EpicycloidCanvas = (props: EpicycloidProps) => {
         };
 
         const init = () => {
-            circle = Circle({ x: 0, y: 0, r: radius, markCount: markCount });
             draw();
         };
 
@@ -109,30 +107,22 @@ const EpicycloidCanvas = (props: EpicycloidProps) => {
 
     const animate = () => {
         if (animation) {
+            let startTime: number | null = null;
+            let theEpicycloid = Epicycloid();
 
-            /*
-                fps = frames per second (default: 20)
-                number of frames = fps * duration (default: 10)
-                increment = maxCusp / number of frames (default: 0.1)
-                increment = maxCusp / (fps * duration)
-                secondPerFrame = duration / number of frames
-                secondPerFrame = duration / (fps * duration)
-                secondPerFrame = 1 / fps
-                millisecondPerFrame = 1000 / fps (default: 50)
-            */
+            const animateFrame = (timestamp: number) => {
+                if (!startTime) startTime = timestamp;
+                const elapsedTime = timestamp - startTime;
 
-            const increment = maxCusp! / (fps * duration)
-
-            const interval = setInterval(() => {
-                if (cuspCount >= maxCusp) {
-                    clearInterval(interval)
-                } else {
-                    cuspCount += increment
-                    ctx!.clearRect(0, 0, canvasWidth, canvasHeight)
-                    let theEpicycloid = Epicycloid()
-                    theEpicycloid.init()
+                if (elapsedTime < duration * 1000) {
+                    cuspCount = (maxCusp * elapsedTime) / (duration * 1000);
+                    ctx!.clearRect(0, 0, canvasWidth, canvasHeight);
+                    theEpicycloid.init();
+                    requestAnimationFrame(animateFrame);
                 }
-            }, (1000 / fps) || 50);
+            };
+
+            requestAnimationFrame(animateFrame);
         }
     };
 

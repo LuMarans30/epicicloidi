@@ -45,8 +45,7 @@ export const HomePage = () => {
                             "#de3536",
                             "#f27338"
                         ]}
-                        fps={144}
-                        duration={5}
+                        duration={10}
                     />
                 </Box>
                 <Box sx={rightColumnStyle}>
