@@ -14,7 +14,7 @@ type EpicycloidProps = {
     strokeWidth?: number;
 };
 
-const EpicycloidPixi: React.FC<EpicycloidProps> = (props) => {
+const EpicycloidCanvas: React.FC<EpicycloidProps> = (props) => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const appRef = useRef<PIXI.Application | null>(null);
 
@@ -123,4 +123,4 @@ const EpicycloidPixi: React.FC<EpicycloidProps> = (props) => {
     return <canvas ref={canvasRef} width={width} height={height} />;
 };
 
-export default EpicycloidPixi;
+export default EpicycloidCanvas;
