@@ -9,8 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.6",
     "@mui/material": "^5.14.3",
     "@types/node": "20.4.7",
@@ -24,5 +22,8 @@
     "react-dom": "18.2.0",
     "sharp": "^0.32.5",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "webpack-bundle-analyzer": "^4.9.1"
   }
 }
