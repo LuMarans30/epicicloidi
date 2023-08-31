@@ -35,16 +35,11 @@ export const HomePage = () => {
                         <source src="/static/videos/epicicloide.webm" type="video/webm" />
                     </video>*/}
                     <EpicycloidCanvas
-                        markCount={100}
+                        markCount={120}
                         animation={true}
                         width={500}
                         height={500}
                         radius={250}
-                        gradientList={[
-                            "#FF0000",
-                            "#de3536",
-                            "#f27338"
-                        ]}
                         duration={10}
                     />
                 </Box>

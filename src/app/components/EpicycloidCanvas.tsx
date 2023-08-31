@@ -1,12 +1,5 @@
-import { useEffect, useMemo, useRef } from "react";
-
-type CircleType = {
-    x: number;
-    y: number;
-    r: number;
-    markCount: number;
-    transform?: (() => void) | undefined;
-};
+import React, { useEffect, useRef } from "react";
+import * as PIXI from "pixi.js";
 
 type EpicycloidProps = {
     cuspCount?: number;
@@ -14,143 +7,120 @@ type EpicycloidProps = {
     markCount?: number;
     width?: number;
     height?: number;
-    strokeColor?: string;
+    strokeColor?: number;
     animation?: boolean;
-    gradientList?: string[];
     maxCusp?: number;
     duration?: number;
+    strokeWidth?: number;
 };
 
-const EpicycloidCanvas = (props: EpicycloidProps) => {
-
+const EpicycloidPixi: React.FC<EpicycloidProps> = (props) => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    let ctx: CanvasRenderingContext2D | null = null;
+    const appRef = useRef<PIXI.Application | null>(null);
 
-    let cuspCount = props.cuspCount || 0;
-    const maxCusp = props.maxCusp || 1;
-    const radius = props.radius || 240;
-    const markCount = props.markCount || 70;
+    const {
+        cuspCount = 0,
+        maxCusp = 1,
+        radius = 240,
+        markCount = 70,
+        width = 700,
+        height = 700,
+        strokeColor = 0xff0000, // Red color in hex format
+        animation = false,
+        duration = 0.5,
+        strokeWidth = 1.5
+    } = props;
 
-    const canvasWidth = props.width || 700;
-    const canvasHeight = props.height || 700;
+    useEffect(() => {
+        const app = new PIXI.Application<HTMLCanvasElement>({
+            view: canvasRef.current!,
+            width: width,
+            height: height,
+            antialias: true,
+            backgroundAlpha: 0x000000 // Transparent background
+        });
 
-    const strokeColor = props.strokeColor || "red";
+        appRef.current = app;
 
-    const animation = props.animation || false;
-    const duration = props.duration || 0.5;
+        const circle = new PIXI.Graphics();
+        circle.lineStyle(strokeWidth, strokeColor);
+        circle.drawCircle(0, 0, radius);
 
-    const Circle = (props: CircleType) => {
-        const dA = (2 * Math.PI) / markCount;
-
-        const draw = () => {
-            ctx!.save();
-            if (props.transform !== undefined) props.transform();
-            ctx!.beginPath();
-            ctx!.arc(props.x, props.y, props.r, 0, 2 * Math.PI, false);
-            ctx!.stroke();
-            ctx!.restore();
-        };
-
-        const lineOrMoveTo = (i: number, option: string) => {
-            ctx!.save();
-            if (props.transform !== undefined) props.transform();
-            ctx!.translate(props.x, props.y);
-            ctx!.rotate(i * dA);
-
-            if (option === "move") ctx!.moveTo(props.r, 0);
-            else if (option === "line") ctx!.lineTo(props.r, 0);
-
-            ctx!.restore();
-        };
-
-        return {
-            draw,
-            lineOrMoveTo
-        };
-    };
-
-    const circle = useMemo(() => Circle({ x: 0, y: 0, r: radius, markCount: markCount }), [radius, markCount]);
-
-    const Epicycloid = () => {
-
-        const draw = () => {
+        const drawEpicycloid = (cuspCount: number) => {
             let gap = 1;
 
-            ctx!.save();
-            ctx!.translate(
-                ctx!.canvas.width / 2,
-                ctx!.canvas.height / 2
-            );
+            // Center of the canvas
+            const centerX = width / 2;
+            const centerY = height / 2;
 
-            circle?.draw();
+            //Center the circle in the middle of the canvas
+            circle.x = centerX;
+            circle.y = centerY;
 
+            app.stage.addChild(circle);
+
+            // Draw the epicycloid curve line by line using PIXI.Graphics
             for (let i = 0; i < markCount; i++) {
-                ctx!.beginPath();
-                circle?.lineOrMoveTo(i, "move");
-                circle?.lineOrMoveTo(i + gap, "line");
-                ctx!.stroke();
+                const line = new PIXI.Graphics();
+                line.lineStyle(strokeWidth, strokeColor);
+
+                const angle = i * ((2 * Math.PI) / markCount);
+                const startPoint = new PIXI.Point(centerX + radius * Math.cos(angle), centerY + radius * Math.sin(angle));
+
+                const nextAngle = (i + gap) * ((2 * Math.PI) / markCount);
+                const endPoint = new PIXI.Point(centerX + radius * Math.cos(nextAngle), centerY + radius * Math.sin(nextAngle));
+
+                line.moveTo(startPoint.x, startPoint.y);
+                line.lineTo(endPoint.x, endPoint.y);
+
+                app.stage.addChild(line);
 
                 gap += cuspCount;
             }
-
-            ctx!.restore();
         };
 
-        const init = () => {
-            draw();
-        };
-
-        return {
-            init
-        };
-    };
-
-    const animate = () => {
         if (animation) {
             let startTime: number | null = null;
-            let theEpicycloid = Epicycloid();
 
             const animateFrame = (timestamp: number) => {
+
                 if (!startTime) startTime = timestamp;
                 const elapsedTime = timestamp - startTime;
 
                 if (elapsedTime < duration * 1000) {
-                    cuspCount = (maxCusp * elapsedTime) / (duration * 1000);
-                    ctx!.clearRect(0, 0, canvasWidth, canvasHeight);
-                    theEpicycloid.init();
+                    const updatedCuspCount = (maxCusp * elapsedTime) / (duration * 1000);
+                    if (app.stage === null) return;
+                    app.stage.removeChildren(); // Clear previous frames
+                    drawEpicycloid(updatedCuspCount);
+                    app.renderer.render(app.stage);
                     requestAnimationFrame(animateFrame);
                 }
             };
 
-            requestAnimationFrame(animateFrame);
+            animateFrame(performance.now());
+
+        } else {
+            drawEpicycloid(cuspCount);
+            app.renderer.render(app.stage);
         }
-    };
 
-    useEffect(() => {
-        if (canvasRef.current) {
-            ctx = canvasRef.current.getContext("2d")!
-            let theEpicycloid = Epicycloid()
+        return () => {
+            app.destroy(); // Clean up when the component unmounts
+        };
+    }, [
+        animation,
+        cuspCount,
+        duration,
+        markCount,
+        maxCusp,
+        radius,
+        strokeColor,
+        strokeWidth,
+        width,
+        height
+    ]);
 
-            if (props.gradientList === undefined) {
-                ctx.strokeStyle = strokeColor;
-            }
-
-            if (props.gradientList !== undefined) {
-                const gradient = ctx.createLinearGradient(0, 0, 200, 0);
-                props.gradientList?.forEach((item, index) => {
-                    const length = props.gradientList!.length;
-                    gradient.addColorStop(index / length, item);
-                });
-                ctx.strokeStyle = gradient;
-            }
-
-            theEpicycloid.init();
-
-            animate();
-        }
-    });
-
-    return <canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} />;
+    return <canvas ref={canvasRef} width={width} height={height} />;
 };
 
-export default EpicycloidCanvas;
+export default EpicycloidPixi;
