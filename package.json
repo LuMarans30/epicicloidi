@@ -20,10 +20,8 @@
     "pixi.js": "^7.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-geogebra": "^1.2.5",
     "sharp": "^0.32.5",
     "typescript": "5.1.6"
-  },
-  "devDependencies": {
-    "webpack-bundle-analyzer": "^4.9.1"
   }
 }

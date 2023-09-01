@@ -10,7 +10,7 @@ export const EpicicloideAlVariareDelRaggio = () => {
         <PageGeogebra
             title="Epicicloide con moto tolemaico"
             description="Abbiamo riprodotto con GeoGebra il moto Tolemaico dei pianeti."
-            url="https://www.geogebra.org/material/iframe/id/yj7qfds2/width/1584/height/714/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false"
+            path="/static/geogebra/iperbole.ggb"
             instructions={instructions}
         />
     )

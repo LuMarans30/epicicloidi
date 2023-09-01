@@ -4,13 +4,16 @@ import { useRouter } from "next/router"
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import { ReactNode } from "react"
+import Geogebra from "react-geogebra"
 
 interface PageGeogebraProps {
     title: string,
-    url?: string,
+    path?: string,
     description?: string,
     instructions?: string[],
-    externalResources?: ReactNode[]
+    externalResources?: ReactNode[],
+    geogebraWidth?: number,
+    geogebraHeight?: number
 }
 
 const containerStyle = {
@@ -27,7 +30,7 @@ const breadcrumbStyle = {
     width: '100%',
 }
 
-export const PageGeogebra = ({ title, description, instructions, url, externalResources }: PageGeogebraProps) => {
+export const PageGeogebra = ({ title, description, instructions, path, geogebraWidth, geogebraHeight, externalResources }: PageGeogebraProps) => {
 
     const router = useRouter()
 
@@ -107,8 +110,18 @@ export const PageGeogebra = ({ title, description, instructions, url, externalRe
             }
             <Divider />
             {
-                url &&
-                <iframe title="Geogebra embedding" loading="lazy" src={url} width="800" height="600" allowFullScreen style={{ border: 'none', borderRadius: 4 }}></iframe>
+                path &&
+                <Geogebra
+                    appName="classic"
+                    width={geogebraWidth || 800}
+                    height={geogebraHeight || 600}
+                    appletOnLoad={() => console.log("Applet loaded")}
+                    id="applet_container"
+                    filename={path}
+                    showMenuBar={false}
+                    showToolBar={false}
+                    showAlgebraInput={false}
+                />
             }
         </Box >
     )

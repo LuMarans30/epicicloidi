@@ -12,11 +12,11 @@ export const CardioideAlgoritmo = () => {
         <PageGeogebra
             title="Cardioide con algoritmo"
             description="Abbiamo riprodotto con GeoGebra l'algoritmo per la costruzione della curva Cardioide"
-            url="https://www.geogebra.org/material/iframe/id/yj7qfds2/width/1584/height/714/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false"
+            path="/static/geogebra/iperbole.ggb"
             instructions={instructions}
             externalResources={
                 [
-                    <Link key={1} href="/static/algoritmoCardiode.pdf" target="_blank" rel="noopener noreferrer">L&aposAlgoritmo della cardioide</Link>,
+                    <Link key={1} href="/static/algoritmoCardiode.pdf" target="_blank" rel="noopener noreferrer">L&apos;Algoritmo della cardioide</Link>,
                     <Link key={2} href="/static/cardioideDisegnare.pdf" target="_blank" rel="noopener noreferrer">Disegna una cardioide</Link>
                 ]
             }
