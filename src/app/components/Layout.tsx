@@ -15,6 +15,8 @@ export default function Layout(props: { children: ReactNode | ReactNode[] }) {
                 <meta name="title" content={'Epicicloidi'} />
                 <meta name="description" content={'Epicicloidi con Geogebra'} />
                 <link rel="icon" href={icon.src} />
+                <link rel="manifest" href="/manifest.json" />
+                <link rel="apple-touch-icon" href="/logo.svg"></link>
             </Head>
             <CustomThemeProvider>
                 <CustomAppBar title="Epicicloidi con Geogebra" startIcon={"/logo.svg"} />

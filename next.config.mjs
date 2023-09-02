@@ -5,6 +5,10 @@ const WithPWA = pkg
 
 const withPWA = WithPWA({
     dest: 'public',
+    register: true,
+    scope: '/',
+    sw: 'service-worker.js',
+    dynamicStartUrlRedirect: '/index'
 })
 
 const nextConfig = withPWA({

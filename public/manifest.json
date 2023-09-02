@@ -1,0 +1,20 @@
+{
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "name": "Epicicloidi",
+    "short_name": "Epicicloidi",
+    "description": "Epicicloidi con Geogebra",
+    "icons": [
+        {
+            "src": "/logo.svg",
+            "sizes": "256x256",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "/logo.svg",
+            "sizes": "512x512",
+            "type": "image/svg+xml"
+        }
+    ]
+}
