@@ -5,8 +5,6 @@ import CustomAppBar from "./CustomAppBar"
 import CustomThemeProvider from "./CustomThemeProvider"
 import Head from "next/head"
 
-import icon from '../favicon.ico'
-
 export default function Layout(props: { children: ReactNode | ReactNode[] }) {
     return (
         <>
@@ -14,7 +12,7 @@ export default function Layout(props: { children: ReactNode | ReactNode[] }) {
                 <title>Epicicloidi</title>
                 <meta name="title" content={'Epicicloidi'} />
                 <meta name="description" content={'Epicicloidi con Geogebra'} />
-                <link rel="icon" href={icon.src} />
+                <link rel="icon" href="/logo.svg" />
                 <link rel="manifest" href="/manifest.json" />
                 <link rel="apple-touch-icon" href="/logo.svg"></link>
             </Head>
