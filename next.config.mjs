@@ -8,7 +8,8 @@ const withPWA = WithPWA({
     register: true,
     scope: '/',
     sw: 'service-worker.js',
-    dynamicStartUrlRedirect: '/index'
+    dynamicStartUrlRedirect: '/index',
+    disable: process.env.NODE_ENV === "development"
 })
 
 const nextConfig = withPWA({

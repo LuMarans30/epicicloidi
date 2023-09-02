@@ -13,7 +13,7 @@ export default function Layout(props: { children: ReactNode | ReactNode[] }) {
                 <meta name="title" content={'Epicicloidi'} />
                 <meta name="description" content={'Epicicloidi con Geogebra'} />
                 <link rel="icon" href="/favicon.ico" />
-                <link rel="manifest" href="/manifest.json" />
+                <link rel="manifest" href="/manifest.webmanifest" />
                 <link rel="apple-touch-icon" href="/favicon.ico"></link>
                 <meta name="theme-color" content="#000000" />
                 <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
