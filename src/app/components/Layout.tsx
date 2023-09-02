@@ -15,6 +15,8 @@ export default function Layout(props: { children: ReactNode | ReactNode[] }) {
                 <link rel="icon" href="/favicon.ico" />
                 <link rel="manifest" href="/manifest.json" />
                 <link rel="apple-touch-icon" href="/favicon.ico"></link>
+                <meta name="theme-color" content="#000000" />
+                <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
             </Head>
             <CustomThemeProvider>
                 <CustomAppBar title="Epicicloidi con Geogebra" startIcon={"/logo.svg"} />
