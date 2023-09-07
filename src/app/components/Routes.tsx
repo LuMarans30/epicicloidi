@@ -47,29 +47,25 @@ export const RoutesPages = [
         label: "Spirale di Archimede",
         description: "Abbiamo riprodotto con GeoGebra la spirale di Archimede con la macchina di Suardi.",
         path: "/spirale-archimedea",
-        image: Images[6],
-        canvasElement: <SpiralAnimation />
+        image: Images[6]
     },
     {
         label: "Epicicloide",
         description: "Scopri come disegnare le epicicloidi facendo variare il raggio del cerchio tangente.",
         path: "/epicicloide-al-variare-raggio",
-        image: Images[7],
-        canvasElement: <HypocycloidCanvas />
+        image: Images[7]
     },
     {
         label: "Epitrocoidi",
         description: "Scopri come disegnare le epitrocoidi.",
         path: "/epitrocoidi",
-        image: Images[8],
-        canvasElement: <EpitrochoidCanvas />
+        image: Images[8]
     },
     {
         label: "Ipotrocoidi",
         description: "Scopri come disegnare le ipotrocoidi.",
         path: "/ipotrocoidi",
-        image: Images[9],
-        canvasElement: <HypotrochoidCanvas />
+        image: Images[9]
     }
 ]
 
