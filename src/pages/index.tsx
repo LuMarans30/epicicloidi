@@ -31,9 +31,6 @@ export const HomePage = () => {
         <>
             <Box sx={containerStyle}>
                 <Box sx={homeImageContainerStyle}>
-                    {/*<video width={700} height={700} autoPlay muted>
-                        <source src="/static/videos/epicicloide.webm" type="video/webm" />
-                    </video>*/}
                     <EpicycloidCanvas
                         markCount={120}
                         animation={true}

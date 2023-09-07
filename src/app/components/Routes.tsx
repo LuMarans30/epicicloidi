@@ -10,8 +10,8 @@ export const HomeRoute = {
 
 export const RoutesPages = [
     {
-        label: "Cardiode con algoritmo",
-        description: "Scopri come disegnare una epicicloide con questo algoritmo.",
+        label: "Cardioide con algoritmo",
+        description: "Scopri come disegnare una cardioide con questo algoritmo.",
         path: "/cardioide-con-algoritmo",
         image: Images[1]
     },
@@ -47,7 +47,7 @@ export const RoutesPages = [
     },
     {
         label: "Epicicloide al variare del raggio",
-        description: "Scopri come disegnare le cicloidi facendo variare il raggio del cerchio tangente.",
+        description: "Scopri come disegnare le epicicloidi facendo variare il raggio del cerchio tangente.",
         path: "/epicicloide-al-variare-raggio",
         image: Images[7]
     },
