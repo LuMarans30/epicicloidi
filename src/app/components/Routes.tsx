@@ -10,13 +10,13 @@ export const HomeRoute = {
 
 export const RoutesPages = [
     {
-        label: "Cardioide con algoritmo",
+        label: "Cardioide",
         description: "Scopri come disegnare una cardioide con questo algoritmo.",
         path: "/cardioide-con-algoritmo",
         image: Images[1]
     },
     {
-        label: "Cicloide con punto variabile",
+        label: "Cicloide",
         description: "Scopri come è fatta una cicloide e cosa succede se il punto che la descrive è all'interno o all'esterno del cerchio.",
         path: "/cicloide-con-punto-variabile",
         image: Images[2]
@@ -34,19 +34,19 @@ export const RoutesPages = [
         image: Images[4]
     },
     {
-        label: "Dimostrazione 3 punti allineati - Suardi",
+        label: "3 punti allineati",
         description: "Scopri come disegnare 3 punti allineati con la Penna Geometrica.",
         path: "/dimostrazione-punti-allineati",
         image: Images[5]
     },
     {
-        label: "Spirale di Archimede - Suardi",
+        label: "Spirale di Archimede",
         description: "Abbiamo riprodotto con GeoGebra la spirale di Archimede con la macchina di Suardi.",
         path: "/spirale-archimedea",
         image: Images[6]
     },
     {
-        label: "Epicicloide al variare del raggio",
+        label: "Epicicloide",
         description: "Scopri come disegnare le epicicloidi facendo variare il raggio del cerchio tangente.",
         path: "/epicicloide-al-variare-raggio",
         image: Images[7]
