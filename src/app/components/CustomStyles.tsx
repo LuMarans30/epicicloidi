@@ -19,7 +19,7 @@ export const leftColumnStyle = {
     gap: '1rem',
     padding: '1rem',
     width: '50%',
-    textAlign: 'center',
+    textAlign: 'left',
     float: 'left',
 }
 

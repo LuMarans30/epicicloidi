@@ -16,6 +16,11 @@ const homeImageContainerStyle = {
     position: "relative"
 }
 
+const contentStyle = {
+    ...leftColumnStyle,
+    flex: 1
+}
+
 const imageContainerStyle = {
     ...rightColumnStyle,
     position: "relative",
@@ -54,24 +59,30 @@ export const HomePage = () => {
             {
                 RoutesPages.map((item, index) => {
                     return (
-                        <div key={index}>
+                        <Box key={index} sx={{ flexGrow: 1 }}>
                             <Box sx={containerStyle}>
-                                <Box sx={leftColumnStyle}>
+                                <Box sx={contentStyle}>
                                     <Typography fontWeight={500} fontSize={"2.5rem"} color={"red"} variant="h5">{item.label}</Typography>
-                                    <Typography variant="h6">{item.description}</Typography>
+                                    <Typography sx={{ whiteSpace: "nowrap" }} variant="h6">{item.description}</Typography>
+                                    <Divider />
                                     <Button onClick={() => router.push(item.path)} variant="contained" color="primary">Scopri di più</Button>
                                 </Box>
                                 <Box sx={imageContainerStyle}>
-                                    <Image
-                                        src={item.image}
-                                        alt="Logo"
-                                        fill
-                                        objectFit={'contain'}
-                                    />
+                                    {
+                                        item.canvasElement ?
+                                            item.canvasElement
+                                            :
+                                            <Image
+                                                src={item.image}
+                                                alt="Logo"
+                                                fill
+                                                objectFit={'contain'}
+                                            />
+                                    }
                                 </Box>
                             </Box>
                             <Divider />
-                        </div>
+                        </Box>
                     )
                 })
             }
