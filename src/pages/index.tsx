@@ -69,7 +69,7 @@ export const HomePage = () => {
                                 </Box>
                                 <Box sx={imageContainerStyle}>
                                     {
-                                        item.canvasElement ?
+                                        item.canvasElement !== <></> ?
                                             item.canvasElement
                                             :
                                             <Image
