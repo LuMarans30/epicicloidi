@@ -4,7 +4,7 @@ import Image from "next/image"
 import { flexColumnStyle, flexRowStyle, leftColumnStyle, rightColumnStyle } from "@/app/components/CustomStyles"
 import { RoutesPages } from "@/app/components/Routes"
 import { useRouter } from "next/router"
-import EpicycloidCanvas from "@/app/components/EpicycloidCanvas"
+import CardioidCanvas from "@/app/components/CardioidCanvas"
 
 const containerStyle = {
     ...flexRowStyle,
@@ -36,7 +36,7 @@ export const HomePage = () => {
         <>
             <Box sx={containerStyle}>
                 <Box sx={homeImageContainerStyle}>
-                    <EpicycloidCanvas
+                    <CardioidCanvas
                         markCount={120}
                         animation={true}
                         width={500}

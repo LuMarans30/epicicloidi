@@ -1,15 +1,17 @@
 import { Images } from "../../../public/static/images/Images"
+import CardioidCanvas from "./CardioidCanvas"
 import EpitrochoidCanvas from "./EpitrochoidCanvas"
-import HypocycloidCanvas from "./HypocycloidCanvas"
+import HypocycloidCanvas from "./EpicycloidCanvas"
 import HypotrochoidCanvas from "./HypotrochoidCanvas"
-import SpiralAnimation from "./SpiralCanvas"
+import SpiralAnimation from "./ArchimedesSpiralCanvas"
 
 export const HomeRoute = {
     label: "Home",
     description: "Scopri il magico mondo delle curve epicicloidali.",
     path: "/",
     geogebraUrl: "",
-    image: Images[0]
+    image: Images[0],
+    canvasElement: <CardioidCanvas />
 }
 
 export const RoutesPages = [
@@ -47,25 +49,29 @@ export const RoutesPages = [
         label: "Spirale di Archimede",
         description: "Abbiamo riprodotto con GeoGebra la spirale di Archimede con la macchina di Suardi.",
         path: "/spirale-archimedea",
-        image: Images[6]
+        image: Images[6],
+        canvasElement: <SpiralAnimation />
     },
     {
         label: "Epicicloide",
         description: "Scopri come disegnare le epicicloidi facendo variare il raggio del cerchio tangente.",
         path: "/epicicloide-al-variare-raggio",
-        image: Images[7]
+        image: Images[7],
+        canvasElement: <HypocycloidCanvas />
     },
     {
         label: "Epitrocoidi",
         description: "Scopri come disegnare le epitrocoidi.",
         path: "/epitrocoidi",
-        image: Images[8]
+        image: Images[8],
+        canvasElement: <EpitrochoidCanvas />
     },
     {
         label: "Ipotrocoidi",
         description: "Scopri come disegnare le ipotrocoidi.",
         path: "/ipotrocoidi",
-        image: Images[9]
+        image: Images[9],
+        canvasElement: <HypotrochoidCanvas />
     }
 ]
 

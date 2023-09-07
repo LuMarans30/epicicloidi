@@ -41,6 +41,7 @@ export const HypotrochoidCanvas: React.FC<HypotrochoidCanvasProps> = ({
             width={width}
             height={height}
             frameRate={120}
+            speed={6}
         />
     );
 };

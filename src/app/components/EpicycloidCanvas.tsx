@@ -1,127 +1,89 @@
-import React, { useEffect, useRef } from "react";
-import * as PIXI from "pixi.js";
+import React from 'react';
+import AnimatedCanvas from './AnimatedCanvas';
 
-type EpicycloidProps = {
-    cuspCount?: number;
-    radius?: number;
-    markCount?: number;
+import * as PIXI from 'pixi.js';
+
+interface EpicycloidCanvasProps {
     width?: number;
     height?: number;
-    strokeColor?: number;
-    animation?: boolean;
-    maxCusp?: number;
-    duration?: number;
     strokeWidth?: number;
-};
+    nCusped?: number;
+}
 
-export const EpicycloidCanvas: React.FC<EpicycloidProps> = (props) => {
+export const EpicycloidCanvas: React.FC<EpicycloidCanvasProps> = ({
+    width: width = 400,
+    height: height = 400,
+    strokeWidth: strokeWidth = 3,
+    nCusped: nCusped = 3
+}: EpicycloidCanvasProps) => {
 
-    const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const appRef = useRef<PIXI.Application | null>(null);
+    const size = Math.min(width, height);
 
-    const {
-        cuspCount = 0,
-        maxCusp = 1,
-        radius = 240,
-        markCount = 70,
-        width = 700,
-        height = 700,
-        strokeColor = 0xff0000, // Red color in hex format
-        animation = false,
-        duration = 0.5,
-        strokeWidth = 1.5
-    } = props;
+    const cw = width;
+    const cx = cw / 2;
+    const ch = height;
+    const cy = ch / 2;
 
-    useEffect(() => {
-        const app = new PIXI.Application<HTMLCanvasElement>({
-            view: canvasRef.current!,
-            width: width,
-            height: height,
-            antialias: true,
-            backgroundAlpha: 0x000000 // Transparent background
-        });
+    const R = size / 3.5;
+    const r = R / nCusped;
+    let x: number, y: number, hx: number, hy: number = 0;
+    let phi = 0;
 
-        appRef.current = app;
+    const animationFunction = (t: number, graphics?: PIXI.Graphics) => {
 
-        const circle = new PIXI.Graphics();
-        circle.lineStyle(strokeWidth, strokeColor);
-        circle.drawCircle(0, 0, radius);
+        phi += 0.01;
 
-        const drawEpicycloid = (cuspCount: number) => {
-            let gap = 1;
-
-            // Center of the canvas
-            const centerX = width / 2;
-            const centerY = height / 2;
-
-            //Center the circle in the middle of the canvas
-            circle.x = centerX;
-            circle.y = centerY;
-
-            app.stage.addChild(circle);
-
-            // Draw the epicycloid curve line by line using PIXI.Graphics
-            for (let i = 0; i < markCount; i++) {
-                const line = new PIXI.Graphics();
-                line.lineStyle(strokeWidth, strokeColor);
-
-                const angle = i * ((2 * Math.PI) / markCount);
-                const startPoint = new PIXI.Point(centerX + radius * Math.cos(angle), centerY + radius * Math.sin(angle));
-
-                const nextAngle = (i + gap) * ((2 * Math.PI) / markCount);
-                const endPoint = new PIXI.Point(centerX + radius * Math.cos(nextAngle), centerY + radius * Math.sin(nextAngle));
-
-                line.moveTo(startPoint.x, startPoint.y);
-                line.lineTo(endPoint.x, endPoint.y);
-
-                app.stage.addChild(line);
-
-                gap += cuspCount;
-            }
-        };
-
-        if (animation) {
-            let startTime: number | null = null;
-
-            const animateFrame = (timestamp: number) => {
-
-                if (!startTime) startTime = timestamp;
-                const elapsedTime = timestamp - startTime;
-
-                if (elapsedTime < duration * 1000) {
-                    const updatedCuspCount = (maxCusp * elapsedTime) / (duration * 1000);
-                    if (app.stage === null) return;
-                    app.stage.removeChildren(); // Clear previous frames
-                    drawEpicycloid(updatedCuspCount);
-                    app.renderer.render(app.stage);
-                    requestAnimationFrame(animateFrame);
-                }
-            };
-
-            animateFrame(performance.now());
-
-        } else {
-            drawEpicycloid(cuspCount);
-            app.renderer.render(app.stage);
+        if (phi >= 2 * Math.PI) {
+            return { x, y };
         }
 
-        return () => {
-            app.destroy(); // Clean up when the component unmounts
-        };
-    }, [
-        animation,
-        cuspCount,
-        duration,
-        markCount,
-        maxCusp,
-        radius,
-        strokeColor,
-        strokeWidth,
-        width,
-        height
-    ]);
+        graphics!.clear();
 
-    return <canvas ref={canvasRef} width={width} height={height} />;
+        graphics!.lineStyle(strokeWidth, 0x0000ff); // Blue outline
+        graphics!.drawCircle(cx, cy, R);
+
+        graphics!.lineStyle(strokeWidth, 0xff0000); // Red outline
+        graphics!.drawCircle(cx + (R + r) * Math.cos(phi), cy + (R + r) * Math.sin(phi), 2);
+        graphics!.drawCircle(cx + (R + r) * Math.cos(phi), cy + (R + r) * Math.sin(phi), r);
+
+        x = cx + (R + r) * Math.cos(phi) - r * Math.cos(((R + r) / r) * phi);
+        y = cy + (R + r) * Math.sin(phi) - r * Math.sin(((R + r) / r) * phi);
+
+        graphics!.lineStyle(strokeWidth, 0xff0000); // Red outline
+        graphics!.moveTo(cx + (R + r) * Math.cos(phi), cy + (R + r) * Math.sin(phi));
+        graphics!.lineTo(x, y);
+
+        graphics!.moveTo(x, y);
+        graphics!.endFill();
+
+        graphics!.lineStyle(strokeWidth, 0xff0000); // Red outline
+
+        for (let t = 0; t <= phi; t += 0.01) {
+            hx = cx + (R + r) * Math.cos(t) - r * Math.cos(((R + r) / r) * t);
+            hy = cy + (R + r) * Math.sin(t) - r * Math.sin(((R + r) / r) * t);
+            graphics!.lineTo(hx, hy);
+        }
+
+        graphics!.endFill();
+
+        return { x, y };
+    };
+
+    const strokeFunction = (t: number) => {
+        const r = 100 + Math.round(Math.sin(t) * 100);
+        const g = 100 + Math.round(Math.cos(t) * 100);
+        const b = 100 - Math.round(Math.cos(t) * 100);
+        return (r << 16) | (g << 8) | b;
+    };
+
+    return (
+        <AnimatedCanvas
+            width={width}
+            height={height}
+            animationFunction={animationFunction}
+            strokeFunction={strokeFunction}
+        />
+    );
 };
 
 export default EpicycloidCanvas;

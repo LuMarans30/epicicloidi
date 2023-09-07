@@ -2,17 +2,17 @@ import React from 'react';
 import AnimatedCanvas from './AnimatedCanvas';
 import * as PIXI from 'pixi.js';
 
-interface SpiralCanvasProps {
+interface ArchimedesSpiralCanvasProps {
     width?: number;
     height?: number;
     strokeWidth?: number;
 }
 
-export const SpiralCanvas: React.FC<SpiralCanvasProps> = ({
+export const ArchimedesSpiralCanvas: React.FC<ArchimedesSpiralCanvasProps> = ({
     width: propWidth = 400,
     height: propHeight = 400,
     strokeWidth: propStrokeWidth = 3,
-}: SpiralCanvasProps) => {
+}: ArchimedesSpiralCanvasProps) => {
 
     let angle = 1;
     const angularSpeed = 0.1;
@@ -37,11 +37,7 @@ export const SpiralCanvas: React.FC<SpiralCanvasProps> = ({
         const x = Math.sin(angle) * distance;
         const y = Math.cos(angle) * distance;
 
-        const r = 100 + Math.round(Math.sin(t) * 100);
-        const g = 100 + Math.round(Math.cos(t) * 100);
-        const b = 100 - Math.round(Math.cos(t) * 100);
-
-        const hexColor = (r << 16) | (g << 8) | b;
+        const hexColor = 0xff0000;
 
         graphics!.lineStyle(strokeWidth, hexColor, 1); // Stroke color
         graphics!.moveTo(prevX + width / 2, prevY + height / 2);
@@ -54,10 +50,8 @@ export const SpiralCanvas: React.FC<SpiralCanvasProps> = ({
     };
 
     const strokeFunction = (t: number) => {
-        const r = 100 + Math.round(Math.sin(t) * 100);
-        const g = 100 + Math.round(Math.cos(t) * 100);
-        const b = 100 - Math.round(Math.cos(t) * 100);
-        return (r << 16) | (g << 8) | b;
+        //red hex
+        return 0xff0000;
     };
 
     return (
@@ -70,4 +64,4 @@ export const SpiralCanvas: React.FC<SpiralCanvasProps> = ({
     );
 };
 
-export default SpiralCanvas;
+export default ArchimedesSpiralCanvas;
