@@ -11,7 +11,7 @@ export const CicloidePuntoVariabile = () => {
         <PageGeogebra
             title="Cicloide con punto variabile"
             description="Abbiamo riprodotto con GeoGebra la cicloide."
-            path="/static/geogebra/iperbole.ggb" 
+            path="/static/geogebra/cicloidePuntoVariabile.ggb"
             instructions={instructions}
         />
     )

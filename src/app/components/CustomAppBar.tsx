@@ -13,11 +13,13 @@ import HomeIcon from '@mui/icons-material/Home'
 
 const bannerStyle = {
     ...flexRowStyle,
-    padding: '1rem',
+    padding: '1rem'
 }
 
 const buttonStyle = {
     borderRadius: 5,
+    padding: '1rem',
+    fontSize: '0.9rem'
 }
 
 export const CustomAppBar = (props: { title: string, startIcon: string }) => {

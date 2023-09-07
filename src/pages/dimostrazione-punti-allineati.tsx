@@ -6,7 +6,7 @@ export const DimostrazioneTrePuntiAllineatiSuardi = () => {
         <PageGeogebra
             title="Dimostrazione 3 punti allineati - Suardi"
             description="Ecco come Gianbattista Suardi riesce a disegnare 3 punti allineati con la sua Penna Geometrica."
-            path="/static/geogebra/iperbole.ggb"
+            path="/static/geogebra/costruzioneTrePuntiAllineati.ggb"
         />
     )
 }

@@ -11,7 +11,7 @@ export const EpicicloideAlVariareDelRaggio = () => {
         <PageGeogebra
             title="Epicicloide al variare del raggio"
             description="Abbiamo riprodotto con GeoGebra l'epicicloide."
-            path="/static/geogebra/iperbole.ggb"
+            path="/static/geogebra/epicicloidiAlVariareRaggio.ggb"
             instructions={instructions}
         />
     )
