@@ -26,22 +26,22 @@ export const ArchimedesSpiralCanvas: React.FC<ArchimedesSpiralCanvasProps> = ({
     const height = propHeight;
     const strokeWidth = propStrokeWidth;
 
-    const animationFunction = (t: number, graphics?: PIXI.Graphics) => {
-        if (distance > width / 2) return { x: prevX, y: prevY };
+    const animationFunction = (t?: number, graphics?: PIXI.Graphics) => {
 
-        t += 0.02;
+        if (t === 0) {
+            prevX = 0;
+            prevY = 0;
+            angle = 1;
+            distance = 3;
+        }
+
+        if (distance > width / 2) return { x: prevX, y: prevY };
 
         angle += angularSpeed;
         distance += distanceSpeed;
 
         const x = Math.sin(angle) * distance;
         const y = Math.cos(angle) * distance;
-
-        const hexColor = 0xff0000;
-
-        graphics!.lineStyle(strokeWidth, hexColor, 1); // Stroke color
-        graphics!.moveTo(prevX + width / 2, prevY + height / 2);
-        graphics!.lineTo(x + width / 2, y + height / 2);
 
         prevX = x;
         prevY = y;

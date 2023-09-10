@@ -13,16 +13,16 @@ export const HypotrochoidCanvas: React.FC<HypotrochoidCanvasProps> = ({
 
     const scale = Math.min(width, height) / 30;
 
-    const animationFunction = (t: number) => {
+    const animationFunction = (t?: number) => {
         const aValue = 12.0 * scale;
         const bValue = 2.24 * scale;
         const cValue = 5.0 * scale;
         const x =
-            (aValue - bValue) * Math.cos(t) +
-            cValue * Math.cos((aValue / bValue - 1.0) * t);
+            (aValue - bValue) * Math.cos(t!) +
+            cValue * Math.cos((aValue / bValue - 1.0) * t!);
         const y =
-            (aValue - bValue) * Math.sin(t) -
-            cValue * Math.sin((aValue / bValue - 1.0) * t);
+            (aValue - bValue) * Math.sin(t!) -
+            cValue * Math.sin((aValue / bValue - 1.0) * t!);
 
         return { x, y };
     };
@@ -40,8 +40,8 @@ export const HypotrochoidCanvas: React.FC<HypotrochoidCanvasProps> = ({
             strokeFunction={strokeFunction}
             width={width}
             height={height}
-            frameRate={120}
-            speed={6}
+            maxFPS={120}
+            speed={4}
         />
     );
 };

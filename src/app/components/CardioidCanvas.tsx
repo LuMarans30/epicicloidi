@@ -7,7 +7,7 @@ type CardioidCanvasProps = {
     markCount?: number;
     width?: number;
     height?: number;
-    strokeColor?: number;
+    strokeColor?: number | string;
     animation?: boolean;
     maxCusp?: number;
     duration?: number;
@@ -26,7 +26,7 @@ export const CardioidCanvas: React.FC<CardioidCanvasProps> = (props) => {
         markCount = 70,
         width = 700,
         height = 700,
-        strokeColor = 0xff0000, // Red color in hex format
+        strokeColor = "red",
         animation = false,
         duration = 0.5,
         strokeWidth = 1.5

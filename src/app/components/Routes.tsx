@@ -1,9 +1,10 @@
 import { Images } from "../../../public/static/images/Images"
 import CardioidCanvas from "./CardioidCanvas"
 import EpitrochoidCanvas from "./EpitrochoidCanvas"
-import HypocycloidCanvas from "./EpicycloidCanvas"
 import HypotrochoidCanvas from "./HypotrochoidCanvas"
-import SpiralAnimation from "./ArchimedesSpiralCanvas"
+import ArchimedesSpiralCanvas from "./ArchimedesSpiralCanvas"
+import EpicycloidCanvas from "./EpicycloidCanvas"
+import CycloidCanvas from "./CycloidCanvas"
 
 export const HomeRoute = {
     label: "Home",
@@ -20,14 +21,20 @@ export const RoutesPages = [
         description: "Scopri come disegnare una cardioide con questo algoritmo.",
         path: "/cardioide-con-algoritmo",
         image: Images[1],
-        canvasElement: undefined
+        canvasElement:
+            <CardioidCanvas
+                animation={false}
+                markCount={120}
+                cuspCount={5}
+                strokeColor={"red"}
+            />
     },
     {
         label: "Cicloide",
         description: "Scopri come è fatta una cicloide e cosa succede se il punto che la descrive è all'interno o all'esterno del cerchio.",
         path: "/cicloide-con-punto-variabile",
         image: Images[2],
-        canvasElement: undefined
+        canvasElement: <CycloidCanvas />,
     },
     {
         label: "Penna geometrica",
@@ -55,29 +62,29 @@ export const RoutesPages = [
         description: "Abbiamo riprodotto con GeoGebra la spirale di Archimede con la macchina di Suardi.",
         path: "/spirale-archimedea",
         image: Images[6],
-        canvasElement: undefined
+        canvasElement: <ArchimedesSpiralCanvas />
     },
     {
         label: "Epicicloide",
         description: "Scopri come disegnare le epicicloidi facendo variare il raggio del cerchio tangente.",
         path: "/epicicloide-al-variare-raggio",
         image: Images[7],
-        canvasElement: undefined
+        canvasElement: <EpicycloidCanvas />
     },
     {
         label: "Epitrocoidi",
         description: "Scopri come disegnare le epitrocoidi.",
         path: "/epitrocoidi",
         image: Images[8],
-        canvasElement: undefined
+        canvasElement: <EpitrochoidCanvas />
     },
     {
         label: "Ipotrocoidi",
         description: "Scopri come disegnare le ipotrocoidi.",
         path: "/ipotrocoidi",
         image: Images[9],
-        canvasElement: undefined
-    }
+        canvasElement: <HypotrochoidCanvas />
+    },
 ]
 
 export const Routes = [
