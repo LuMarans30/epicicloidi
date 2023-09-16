@@ -85,6 +85,13 @@ export const RoutesPages = [
         image: Images[9],
         canvasElement: <HypotrochoidCanvas />
     },
+    {
+        label: "Compasso di Dürer",
+        description: "Scopri come disegnare una cardioide con il Compasso di Dürer.",
+        path: "/compasso-durer",
+        image: Images[10],
+        canvasElement: undefined
+    }
 ]
 
 export const Routes = [

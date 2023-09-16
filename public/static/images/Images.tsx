@@ -8,6 +8,7 @@ import spiraleArchimedea from './spiraleArchimedea.webp';
 import epicicloideAlgoritmo from './epicicloideAlgoritmo.webp';
 import epitrocoide from './epitrocoide.webp';
 import ipotrocoide from './ipotrocoide.webp';
+import compassoDurer from './compassoDurer.webp';
 
 export const Images: string[] = [
     homePage.src,
@@ -19,5 +20,6 @@ export const Images: string[] = [
     spiraleArchimedea.src,
     epicicloideAlgoritmo.src,
     epitrocoide.src,
-    ipotrocoide.src
+    ipotrocoide.src,
+    compassoDurer.src
 ]

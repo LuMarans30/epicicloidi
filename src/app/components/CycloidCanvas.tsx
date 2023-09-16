@@ -10,7 +10,7 @@ interface CycloidCanvasProps {
 }
 
 const CycloidCanvas: React.FC<CycloidCanvasProps> = ({
-    width = 600,
+    width = 550,
     height = 300,
     strokeWidth = 4,
     radius = 40,
