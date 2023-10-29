@@ -73,7 +73,7 @@ export const HomePage = () => {
                 RoutesPages.map((item, index) => {
                     return (
                         <Box key={index} sx={{ flexGrow: 1 }}>
-                            <Box sx={containerStyle}>
+                            <Box sx={{ ...containerStyle, flexDirection: { xs: "column", md: "row" } }}>
                                 <Box sx={contentStyle}>
                                     <Typography fontWeight={500} fontSize={"2.5rem"} color={"red"} variant="h5">{item.label}</Typography>
                                     <Typography sx={{ whiteSpace: "nowrap" }} variant="h6">{item.description}</Typography>
@@ -103,7 +103,7 @@ export const HomePage = () => {
                                 </Box>
                             </Box>
                             <Divider />
-                        </Box>
+                        </Box >
                     )
                 })
             }

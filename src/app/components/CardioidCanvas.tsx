@@ -22,7 +22,7 @@ export const CardioidCanvas: React.FC<CardioidCanvasProps> = (props) => {
     const {
         cuspCount = 0,
         maxCusp = 1,
-        radius = 240,
+        radius = 200,
         markCount = 70,
         width = 700,
         height = 700,
