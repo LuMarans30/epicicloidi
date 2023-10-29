@@ -14,13 +14,13 @@ export const EpitrochoidCanvas: React.FC<EpitrochoidCanvasProps> = ({
     const rValue = canvasWidth / 11;
     const dValue = canvasWidth / 15;
 
-    const animationFunction = (t: number) => {
+    const animationFunction = (t?: number) => {
         const x =
-            (RValue + rValue) * Math.cos(t) -
-            dValue * Math.cos((RValue + rValue) * t / rValue);
+            (RValue + rValue) * Math.cos(t!) -
+            dValue * Math.cos((RValue + rValue) * t! / rValue);
         const y =
-            (RValue + rValue) * Math.sin(t) -
-            dValue * Math.sin((RValue + rValue) * t / rValue);
+            (RValue + rValue) * Math.sin(t!) -
+            dValue * Math.sin((RValue + rValue) * t! / rValue);
         return { x, y };
     };
 

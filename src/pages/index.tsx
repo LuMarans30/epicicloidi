@@ -1,10 +1,12 @@
-import { Box, Button, Divider, Typography } from "@mui/material"
+import { Box, Button, Divider, Icon, SvgIcon, Typography } from "@mui/material"
 
 import Image from "next/image"
 import { flexColumnStyle, flexRowStyle, leftColumnStyle, rightColumnStyle } from "@/app/components/CustomStyles"
 import { RoutesPages } from "@/app/components/Routes"
 import { useRouter } from "next/router"
 import CardioidCanvas from "@/app/components/CardioidCanvas"
+
+import GeogebraIcon from "/public/static/geogebra/geogebraIcon.png"
 
 const containerStyle = {
     ...flexRowStyle,
@@ -31,6 +33,17 @@ const imageContainerStyle = {
 export const HomePage = () => {
 
     const router = useRouter()
+
+    const geogebraIconImage = (width: number, height: number) => {
+        return (
+            <img
+                alt="edit"
+                width={width}
+                height={height}
+                src={GeogebraIcon.src}
+            />
+        )
+    }
 
     return (
         <>
@@ -65,7 +78,15 @@ export const HomePage = () => {
                                     <Typography fontWeight={500} fontSize={"2.5rem"} color={"red"} variant="h5">{item.label}</Typography>
                                     <Typography sx={{ whiteSpace: "nowrap" }} variant="h6">{item.description}</Typography>
                                     <Divider />
-                                    <Button onClick={() => router.push(item.path)} variant="contained" color="primary">Scopri di più</Button>
+                                    <Button
+                                        startIcon={geogebraIconImage(40, 40)}
+                                        onClick={() => router.push(item.path)}
+                                        sx={{ borderRadius: 3 }}
+                                        variant="contained"
+                                        color="primary"
+                                    >
+                                        Scopri di più
+                                    </Button>
                                 </Box>
                                 <Box sx={imageContainerStyle}>
                                     {
