@@ -1,5 +1,5 @@
 import { flexColumnStyle, flexRowStyle } from "@/app/components/CustomStyles"
-import { Box, Breadcrumbs, Divider, Link, List, ListItem, Typography } from "@mui/material"
+import { Box, Breadcrumbs, Link, List, ListItem, Typography } from "@mui/material"
 import { useRouter } from "next/router"
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
@@ -9,7 +9,7 @@ import Geogebra from "react-geogebra"
 interface PageGeogebraProps {
     title: string,
     path?: string,
-    description?: string,
+    description?: string | ReactNode,
     instructions?: string[],
     externalResources?: ReactNode[],
     geogebraWidth?: number,
@@ -85,7 +85,6 @@ export const PageGeogebra = ({ title, description, instructions, path, geogebraW
                     })
                 }
             </List>
-            <Divider />
             {
                 externalResources &&
                 <Box sx={{ ...flexColumnStyle, gap: '0.5rem' }}>
@@ -108,7 +107,6 @@ export const PageGeogebra = ({ title, description, instructions, path, geogebraW
                     </List>
                 </Box>
             }
-            <Divider />
             {
                 path &&
                 <Geogebra
