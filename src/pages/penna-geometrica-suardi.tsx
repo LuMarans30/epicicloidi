@@ -13,8 +13,8 @@ export const PennaGeometricaSuardi = () => {
             description={
                 <div style={{ textAlign: "center" }}>
                     <Typography variant="h5" component="div" textTransform={"none"}>
-                        Il matematico italiano del Settecento Giambattista Suardi nel suo famoso trattato del 1752 intitolato <br />"Nuovi istromenti per la descrizione di diverse curve antiche e moderne...",<br /> nel capitolo nono descrisse uno strumento che chiamò "Penna
-                        Geometrica" in grado di tracciare trocoidi.
+                        Il matematico italiano del Settecento Giambattista Suardi nel suo famoso trattato del 1752 intitolato <br />&quot;Nuovi istromenti per la descrizione di diverse curve antiche e moderne...&quot;,<br /> nel capitolo nono descrisse uno strumento che chiamò &quot;Penna
+                        Geometrica&quot; in grado di tracciare trocoidi.
                         <br /><br />Abbiamo riprodotto con GeoGebra la penna geometrica del Suardi in grado di riprodurre il moto Tolemaico dei pianeti.
                     </Typography>
                 </div>
